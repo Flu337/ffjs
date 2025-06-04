@@ -4,7 +4,7 @@
     <div class="movie-details">
       <div v-if="movie.image" class="detail-image-container">
         <img 
-          :src="`/images/${movie.image}`" 
+          :src="`images/${movie.image}`" 
           :alt="`Постер фильма ${movie.title}`"
           class="detail-image"
         >

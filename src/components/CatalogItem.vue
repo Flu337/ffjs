@@ -2,7 +2,7 @@
   <router-link :to="`/details/${movie.id}`" class="movie-card">
     <div v-if="movie.image" class="movie-image-container">
       <img 
-        :src="`/images/${movie.image}`" 
+        :src="`images/${movie.image}`"
         :alt="movie.title" 
         class="movie-image"
       >
