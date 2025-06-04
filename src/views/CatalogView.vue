@@ -27,7 +27,10 @@ export default {
       const term = searchTerm.value.toLowerCase()
       return movies.filter(movie => 
         movie.title.toLowerCase().includes(term) ||
-        movie.genre.toLowerCase().includes(term)
+        movie.genre.toLowerCase().includes(term) ||
+        movie.shortDesc.toLowerCase().includes(term) ||
+        movie.titleEng.toLowerCase().includes(term) ||
+        movie.didntSwitch.toLowerCase().includes(term)
       )
     })
 
