@@ -50,7 +50,7 @@ export default {
 
 .movie-image-container {
   width: 100%;
-  height: 200px;
+  height: 450px;
   overflow: hidden;
 }
 
