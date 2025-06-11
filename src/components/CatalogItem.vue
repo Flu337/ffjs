@@ -6,15 +6,23 @@
         :alt="movie.title" 
         class="movie-image"
       >
+      <div class="movie-overlay">
+        <div class="movie-overlay-content">
+          <h3>{{ movie.title }}</h3>
+          <p class="movie-genre">{{ movie.genre }}</p>
+          <p class="movie-short-desc">{{ movie.shortDesc }}</p>
+        </div>
+      </div>
     </div>
     <div v-else class="movie-image-placeholder">
       {{ movie.title.charAt(0).toUpperCase() }}
-    </div>
-
-    <div class="movie-content">
-      <h3>{{ movie.title }}</h3>
-      <p class="movie-genre">{{ movie.genre }}</p>
-      <p class="movie-short-desc">{{ movie.shortDesc }}</p>
+      <div class="movie-overlay">
+        <div class="movie-overlay-content">
+          <h3>{{ movie.title }}</h3>
+          <p class="movie-genre">{{ movie.genre }}</p>
+          <p class="movie-short-desc">{{ movie.shortDesc }}</p>
+        </div>
+      </div>
     </div>
   </router-link>
 </template>
@@ -38,9 +46,10 @@ export default {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   text-decoration: none;
-  color: #333;
-  background: white;
+  color: white;
+  background: #333;
   height: 100%;
+  position: relative;
 }
 
 .movie-card:hover {
@@ -52,6 +61,7 @@ export default {
   width: 100%;
   height: 450px;
   overflow: hidden;
+  position: relative;
 }
 
 .movie-image {
@@ -67,7 +77,7 @@ export default {
 
 .movie-image-placeholder {
   width: 100%;
-  height: 200px;
+  height: 450px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   display: flex;
   align-items: center;
@@ -75,24 +85,44 @@ export default {
   color: #777;
   font-weight: bold;
   font-size: 48px;
+  position: relative;
 }
 
-.movie-content {
-  padding: 15px;
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.movie-content h3 {
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.movie-overlay-content {
+  text-align: center;
+  width: 100%;
+}
+
+.movie-overlay-content h3 {
   margin: 0 0 10px 0;
-  font-size: 18px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 22px;
+  white-space: normal;
 }
 
 .movie-genre {
-  color: #666;
-  font-size: 14px;
-  margin: 0 0 10px 0;
+  color: #ccc;
+  font-size: 16px;
+  margin: 0 0 15px 0;
 }
 
 .movie-short-desc {
@@ -101,6 +131,7 @@ export default {
   margin: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
   overflow: hidden;
 }
 </style>
